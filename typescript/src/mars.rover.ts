@@ -43,18 +43,34 @@ export class MarsRover {
     }
 
     private move(): void {
-        if (this._direction == NORTH) {
+        if (this.isFacingNorth()) {
             this._positionY++
-        } else if (this._direction == SOUTH) {
+        } else if (this.isFacingSouth()) {
             this._positionY--
-        } else if (this._direction == WEST) {
+        } else if (this.isFacingWest()) {
             this._positionX--
-        } else if (this._direction == EAST) {
+        } else if (this.isFacingEast()) {
             this._positionX++
         }
 
         this.wrapAroundYAxis()
         this.wrapAroundXAxis()
+    }
+
+    private isFacingEast() {
+        return this._direction == EAST;
+    }
+
+    private isFacingWest() {
+        return this._direction == WEST;
+    }
+
+    private isFacingNorth() {
+        return this._direction == NORTH;
+    }
+
+    private isFacingSouth() {
+        return this._direction == SOUTH;
     }
 
     private isRotatingToLeft(actualCommand: string): boolean {
@@ -66,34 +82,34 @@ export class MarsRover {
     }
 
     private rotateRight(): void {
-        switch (this._direction) {
-            case NORTH:
+        switch (true) {
+            case this.isFacingNorth():
                 this._direction = EAST
                 break;
-            case EAST:
+            case this.isFacingEast():
                 this._direction = SOUTH
                 break;
-            case SOUTH:
+            case this.isFacingSouth():
                 this._direction = WEST
                 break;
-            default:
+            case this.isFacingWest():
                 this._direction = NORTH
                 break;
         }
     }
 
     private rotateLeft(): void {
-        switch (this._direction) {
-            case NORTH:
+        switch (true) {
+            case this.isFacingNorth():
                 this._direction = WEST
                 break;
-            case WEST:
+            case this.isFacingWest():
                 this._direction = SOUTH
                 break;
-            case SOUTH:
+            case this.isFacingSouth():
                 this._direction = EAST
                 break;
-            default:
+            case this.isFacingEast():
                 this._direction = NORTH
                 break;
         }
