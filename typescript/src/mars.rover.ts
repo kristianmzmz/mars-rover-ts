@@ -20,7 +20,7 @@ export class MarsRover {
             }
         })
 
-        return `${this.positionX},${this.wrapAround()},${(this.direction)}`
+        return `${this.wrapAroundX()},${this.wrapAround()},${(this.direction)}`
     }
 
     private move(): void {
@@ -54,6 +54,9 @@ export class MarsRover {
 
     private wrapAround(): number {
         return this.positionY % this.plateauSize;
+    }
+    private wrapAroundX(): number {
+        return this.positionX % this.plateauSize;
     }
 
     private isAMovementCommand(actualCommand: string): boolean {
