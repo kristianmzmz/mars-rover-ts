@@ -9,21 +9,25 @@ export class MarsRover {
     private readonly plateauSize = 10;
     private positionY = 0;
 
-    private direction: string= NORTH;
+    private direction: string = NORTH;
 
     execute(command: string): string {
         command.split("").forEach((actualCommand) => {
             if (this.isAMovementCommand(actualCommand)) this.positionY++
             if (actualCommand == ROTATE_RIGHT) {
-                if (this.direction === NORTH) {
-                    this.direction = EAST
-                } else if (this.direction == EAST) {
-                    this.direction = SOUTH
-                }
+                this.rotate();
             }
         })
 
         return `0,${(this.wrapAround())},${(this.direction)}`
+    }
+
+    private rotate(): void {
+        if (this.direction === NORTH) {
+            this.direction = EAST
+        } else if (this.direction == EAST) {
+            this.direction = SOUTH
+        }
     }
 
     private wrapAround(): number {
