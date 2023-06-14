@@ -15,12 +15,16 @@ export class MarsRover {
     execute(command: string): string {
         command.split("").forEach((actualCommand) => {
             if (this.isAMovementCommand(actualCommand)) this.positionY++
-            if (actualCommand == ROTATE_RIGHT) {
+            if (this.isARotationMovement(actualCommand)) {
                 this.rotate();
             }
         })
 
         return `0,${(this.wrapAround())},${(this.direction)}`
+    }
+
+    private isARotationMovement(actualCommand: string) {
+        return actualCommand == ROTATE_RIGHT;
     }
 
     private rotate(): void {
