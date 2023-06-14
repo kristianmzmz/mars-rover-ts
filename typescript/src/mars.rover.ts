@@ -23,25 +23,29 @@ export class MarsRover {
 
     execute(commands: string): string {
         commands.split("").forEach((actualCommand) => {
-            if (this.isAMovementCommand(actualCommand)) {
-                this.move();
-            }
-            if (this.isRotatingToRight(actualCommand)) {
-                this.rotateRight();
-            }
-            if (this.isRotatingToLeft(actualCommand)) {
-                this.rotateLeft();
-            }
+            this.executeCommand(actualCommand);
         })
 
         return this.buildResult()
+    }
+
+    private executeCommand(actualCommand: string) {
+        if (this.isAMovementCommand(actualCommand)) {
+            this.moveForward();
+        }
+        if (this.isRotatingToRight(actualCommand)) {
+            this.rotateRight();
+        }
+        if (this.isRotatingToLeft(actualCommand)) {
+            this.rotateLeft();
+        }
     }
 
     private buildResult(): string {
         return `${this._positionX},${this._positionY},${(this._direction)}`;
     }
 
-    private move(): void {
+    private moveForward(): void {
         if (this.isFacingNorth()) {
             this._positionY++
         } else if (this.isFacingSouth()) {
