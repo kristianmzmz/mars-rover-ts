@@ -66,7 +66,13 @@ export class MarsRover {
     }
 
     private wrapAround(): void {
-        this.positionY = this.positionY == this.plateauSize ? 0 : this.positionY;
+        if(this.positionY < 0 ){
+            this.positionY = this.plateauSize - 1
+        }
+
+        if (this.positionY == this.plateauSize) {
+            this.positionY = 0;
+        }
     }
 
     private wrapAroundX(): void {
