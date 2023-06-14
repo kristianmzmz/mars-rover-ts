@@ -24,4 +24,14 @@ describe('Mars Rover', () => {
         // Then
         expect(movementResult).toBe("0,1,N")
     });
+
+    it('should display position (0,2,N) when command is MM', () => {
+        // Given
+        let rover = new MarsRover();
+        let command = "MM";
+        // When
+        let movementResult = rover.execute(command);
+        // Then
+        expect(movementResult).toBe("0,2,N")
+    });
 });
