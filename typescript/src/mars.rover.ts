@@ -1,5 +1,5 @@
 export class MarsRover {
-    execute(): string {
+    execute(command: string): string {
         return "0,0,N"
     }
 }

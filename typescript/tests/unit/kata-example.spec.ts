@@ -10,7 +10,7 @@ describe('Mars Rover', () => {
         // Given
         let rover = new MarsRover();
         // When
-        let movementResult = rover.execute();
+        let movementResult = rover.execute("");
         // Then
         expect(movementResult).toBe("0,0,N")
     });
