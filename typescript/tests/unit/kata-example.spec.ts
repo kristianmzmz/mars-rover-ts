@@ -21,7 +21,7 @@ describe('Mars Rover', () => {
         ["0,3,N", MOVE + MOVE + MOVE],
         ["0,0,N", MOVE + MOVE + MOVE + MOVE + MOVE + MOVE + MOVE + MOVE + MOVE + MOVE],
     ])
-    ('should display position (%s) when command is %s', (expectedResult: string, inputCommand: string) => {
+    ('should move the position to (%s) when command is %s', (expectedResult: string, inputCommand: string) => {
         // Given
         let rover = new MarsRover();
         // When
