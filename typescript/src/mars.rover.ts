@@ -32,7 +32,9 @@ export class MarsRover {
     private move(): void {
         if (this.direction == NORTH) {
             this.positionY++
-        } else {
+        } else if(this.direction == SOUTH) {
+            this.positionX++
+        }else {
             this.positionX++
         }
     }
