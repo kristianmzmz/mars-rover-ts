@@ -1,5 +1,4 @@
 import {
-    PLATEAU_INITIAL_POSITION,
     MarsRover,
     MOVE,
     NORTH,
@@ -13,7 +12,7 @@ let rover: MarsRover
 describe('Mars Rover', () => {
     describe('Initial position 0:0:N', () => {
         beforeEach(() => {
-            rover = new MarsRover(PLATEAU_INITIAL_POSITION, PLATEAU_INITIAL_POSITION, NORTH);
+            rover = new MarsRover(0, 0, NORTH);
         })
 
         it('should create the mars rover', () => {
@@ -111,13 +110,13 @@ describe('Mars Rover', () => {
 
     describe('Change initial position', () => {
         it.each([
-            ["0,0,N","",PLATEAU_INITIAL_POSITION,PLATEAU_INITIAL_POSITION,NORTH],
-            ["1,1,N","",1,1,NORTH],
-            ["1,1,E","",1,1,EAST],
-            ["1,7,S","",1,7,SOUTH],
-            ["1,9,W","",1,9,WEST],
-            ["9,9,W","MM",1,9,WEST],
-            ["8,9,E","MMMMMMM",1,9,EAST],
+            ["0,0,N", "", 0, 0, NORTH],
+            ["1,1,N", "", 1, 1, NORTH],
+            ["1,1,E", "", 1, 1, EAST],
+            ["1,7,S", "", 1, 7, SOUTH],
+            ["1,9,W", "", 1, 9, WEST],
+            ["9,9,W", "MM", 1, 9, WEST],
+            ["8,9,E", "MMMMMMM", 1, 9, EAST],
         ])
         ('should display position (%s) when command is %s and the starting position is (%d:%d:%s)', (expectedResult: string, command: string, initialPositionX: number, initialPositionY: number, initialDirection: string) => {
             // Given
