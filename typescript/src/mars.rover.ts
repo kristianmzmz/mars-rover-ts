@@ -4,9 +4,9 @@ export const ROTATE_LEFT: string = "L";
 export const PLATEAU_INITIAL_POSITION: number = 0;
 
 export const NORTH: string = 'N';
-const EAST: string = 'E';
-const SOUTH: string = 'S';
-const WEST: string = "W";
+export const EAST: string = 'E';
+export const SOUTH: string = 'S';
+export const WEST: string = "W";
 
 const PLATEAU_SIZE: number = 9;
 

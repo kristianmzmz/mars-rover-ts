@@ -1,4 +1,13 @@
-import {PLATEAU_INITIAL_POSITION, MarsRover, MOVE, NORTH, ROTATE_LEFT, ROTATE_RIGHT} from "../../src/mars.rover";
+import {
+    PLATEAU_INITIAL_POSITION,
+    MarsRover,
+    MOVE,
+    NORTH,
+    ROTATE_LEFT,
+    ROTATE_RIGHT,
+    EAST,
+    SOUTH, WEST
+} from "../../src/mars.rover";
 
 let rover: MarsRover
 describe('Mars Rover', () => {
@@ -103,6 +112,10 @@ describe('Mars Rover', () => {
     describe('Change initial position', () => {
         it.each([
             ["0,0,N","",PLATEAU_INITIAL_POSITION,PLATEAU_INITIAL_POSITION,NORTH],
+            ["1,1,N","",1,1,NORTH],
+            ["1,1,E","",1,1,EAST],
+            ["1,7,S","",1,7,SOUTH],
+            ["1,9,W","",1,9,WEST],
         ])
         ('should display position (%s) when command is %s and the starting position is (%d:%d:%s)', (expectedResult: string, command: string, initialPositionX: number, initialPositionY: number, initialDirection: string) => {
             // Given
