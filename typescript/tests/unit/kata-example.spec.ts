@@ -15,33 +15,17 @@ describe('Mars Rover', () => {
         expect(movementResult).toBe("0,0,N")
     });
 
-    it('should display position (0,1,N) when command is M', () => {
+    it.each([
+        ["0,1,N", "M"],
+        ["0,2,N", "MM"],
+        ["0,3,N", "MMM"],
+    ])
+    ('should display position (%s) when command is %s', (expectedResult: string, inputCommand: string) => {
         // Given
         let rover = new MarsRover();
-        let command = "M";
         // When
-        let movementResult = rover.execute(command);
+        let movementResult = rover.execute(inputCommand);
         // Then
-        expect(movementResult).toBe("0,1,N")
-    });
-
-    it('should display position (0,2,N) when command is MM', () => {
-        // Given
-        let rover = new MarsRover();
-        let command = "MM";
-        // When
-        let movementResult = rover.execute(command);
-        // Then
-        expect(movementResult).toBe("0,2,N")
-    });
-
-    it('should display position (0,3,N) when command is MMM', () => {
-        // Given
-        let rover = new MarsRover();
-        let command = "MMM";
-        // When
-        let movementResult = rover.execute(command);
-        // Then
-        expect(movementResult).toBe("0,3,N")
+        expect(movementResult).toBe(expectedResult)
     });
 });
