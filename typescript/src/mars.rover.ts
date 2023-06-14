@@ -1,5 +1,5 @@
 export const MOVE = "M";
-const ROTATE_RIGHT = "R";
+export const ROTATE_RIGHT = "R";
 
 export class MarsRover {
     private readonly plateauSize = 10;

@@ -1,4 +1,4 @@
-import {MarsRover, MOVE} from "../../src/mars.rover";
+import {MarsRover, MOVE, ROTATE_RIGHT} from "../../src/mars.rover";
 
 describe('Mars Rover', () => {
     it('should create the mars rover', () => {
@@ -32,8 +32,7 @@ describe('Mars Rover', () => {
 
     it('should display the mars rover facing east when rotating to right from the starting position', () => {
         let rover = new MarsRover();
-        let rotationCommand = "R";
-        let expectedResult = rover.execute(rotationCommand);
+        let expectedResult = rover.execute(ROTATE_RIGHT);
         expect(expectedResult).toBe("0,0,E")
     });
 });
