@@ -6,6 +6,6 @@ export class MarsRover {
             if(actualCommand == "M") positionY++
         })
 
-        return `0,${positionY},N`
+        return `0,${positionY % 10},N`
     }
 }
