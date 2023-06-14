@@ -5,12 +5,14 @@ export class MarsRover {
 
     execute(command: string): string {
         let positionY = 0;
+        let direction = `N`;
 
         command.split("").forEach((actualCommand) => {
             if (this.isAMovementCommand(actualCommand)) positionY++
+            if (command == "R") direction = "E"
         })
 
-        return `0,${(this.wrapAround(positionY))},N`
+        return `0,${(this.wrapAround(positionY))},${direction}`
     }
 
     private wrapAround(positionY: number): number {
