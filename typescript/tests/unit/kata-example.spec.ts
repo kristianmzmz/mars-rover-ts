@@ -1,4 +1,4 @@
-import {MarsRover, MOVE, ROTATE_RIGHT} from "../../src/mars.rover";
+import {MarsRover, MOVE, ROTATE_LEFT, ROTATE_RIGHT} from "../../src/mars.rover";
 
 describe('Mars Rover', () => {
     it('should create the mars rover', () => {
@@ -46,9 +46,24 @@ describe('Mars Rover', () => {
     });
 
     it.each([
-        ["0,1,E", MOVE + ROTATE_RIGHT ],
+        ["0,0,W", ROTATE_LEFT],
+        ["0,0,S", ROTATE_LEFT + ROTATE_LEFT],
+        ["0,0,E", ROTATE_LEFT + ROTATE_LEFT + ROTATE_LEFT],
+        ["0,0,N", ROTATE_LEFT + ROTATE_LEFT + ROTATE_LEFT + ROTATE_LEFT],
+    ])
+    ('should rotate the position to the left and display (%s) when command is %s', (expectedResult: string, inputCommand: string) => {
+        // Given
+        let rover = new MarsRover();
+        // When
+        let movementResult = rover.execute(inputCommand);
+        // Then
+        expect(movementResult).toBe(expectedResult)
+    });
+
+    it.each([
+        ["0,1,E", MOVE + ROTATE_RIGHT],
         ["1,1,E", MOVE + ROTATE_RIGHT + MOVE],
-        ["0,1,E", MOVE + ROTATE_RIGHT + MOVE+ MOVE+ MOVE+ MOVE+ MOVE+ MOVE+ MOVE+ MOVE+ MOVE + MOVE],
+        ["0,1,E", MOVE + ROTATE_RIGHT + MOVE + MOVE + MOVE + MOVE + MOVE + MOVE + MOVE + MOVE + MOVE + MOVE],
         ["0,0,S", MOVE + ROTATE_RIGHT + ROTATE_RIGHT + MOVE],
         ["0,9,S", MOVE + ROTATE_RIGHT + ROTATE_RIGHT + MOVE + MOVE],
         ["9,1,W", MOVE + ROTATE_RIGHT + ROTATE_RIGHT + ROTATE_RIGHT + MOVE],
