@@ -19,6 +19,7 @@ describe('Mars Rover', () => {
         ["0,1,N", "M"],
         ["0,2,N", "MM"],
         ["0,3,N", "MMM"],
+        ["0,0,N", "MMMMMMMMMM"],
     ])
     ('should display position (%s) when command is %s', (expectedResult: string, inputCommand: string) => {
         // Given
