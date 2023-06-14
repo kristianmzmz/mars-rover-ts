@@ -12,26 +12,32 @@ export class MarsRover {
     private positionX: number = 0;
     private direction: string = NORTH;
 
-    execute(command: string): string {
-        command.split("").forEach((actualCommand) => {
-            if (this.isAMovementCommand(actualCommand)) this.move();
-            if (this.isARotationMovement(actualCommand)) {
+    execute(commands: string): string {
+        commands.split("").forEach((actualCommand) => {
+            if (this.isAMovementCommand(actualCommand)) {
+                this.move();
+            }
+            if (this.isARotationCommand(actualCommand)) {
                 this.rotate();
             }
         })
 
-        return `${this.wrapAroundX()},${this.wrapAround()},${(this.direction)}`
+        return this.buildResult()
+    }
+
+    private buildResult(): string {
+        return `${this.wrapAroundX()},${this.wrapAround()},${(this.direction)}`;
     }
 
     private move(): void {
-        if (this.direction == 'N') {
+        if (this.direction == NORTH) {
             this.positionY++
         } else {
             this.positionX++
         }
     }
 
-    private isARotationMovement(actualCommand: string) {
+    private isARotationCommand(actualCommand: string) {
         return actualCommand == ROTATE_RIGHT;
     }
 

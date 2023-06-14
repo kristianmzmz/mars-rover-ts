@@ -63,7 +63,6 @@ describe('Mars Rover', () => {
         expect(movementResult).toBe("1,1,E")
     });
 
-
     it('should move, rotate and wrap around finishing at (0,1,E) when command is MRMMMMMMMMMM', () => {
         // Given
         let rover = new MarsRover();
