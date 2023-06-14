@@ -1,13 +1,13 @@
 export const MOVE = "M";
 export const ROTATE_RIGHT = "R";
 
-const NORTH = 'N';
-const EAST = 'E';
-const SOUTH = 'S';
-const WEST = "W";
+const NORTH: string = 'N';
+const EAST: string = 'E';
+const SOUTH: string = 'S';
+const WEST: string = "W";
 
 export class MarsRover {
-    private readonly plateauSize = 10;
+    private readonly plateauSize: number = 10;
     private positionY: number = 0;
     private positionX: number = 0;
     private direction: string = NORTH;
@@ -26,7 +26,7 @@ export class MarsRover {
     }
 
     private buildResult(): string {
-        return `${this.wrapAroundX()},${this.wrapAround()},${(this.direction)}`;
+        return `${this.positionX},${this.positionY},${(this.direction)}`;
     }
 
     private move(): void {
@@ -37,6 +37,9 @@ export class MarsRover {
         } else {
             this.positionX++
         }
+
+        this.wrapAround()
+        this.wrapAroundX()
     }
 
     private isARotationCommand(actualCommand: string) {
@@ -60,12 +63,12 @@ export class MarsRover {
         }
     }
 
-    private wrapAround(): number {
-        return this.positionY % this.plateauSize;
+    private wrapAround(): void {
+        this.positionY = this.positionY == this.plateauSize ? 0 : this.positionY;
     }
 
-    private wrapAroundX(): number {
-        return this.positionX % this.plateauSize;
+    private wrapAroundX(): void {
+        this.positionX = this.positionX == this.plateauSize? 0 : this.positionX;
     }
 
     private isAMovementCommand(actualCommand: string): boolean {
