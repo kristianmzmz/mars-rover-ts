@@ -34,6 +34,8 @@ export class MarsRover {
             this.positionY++
         } else if (this.direction == SOUTH) {
             this.positionY--
+        } else if (this.direction == WEST) {
+            this.positionX--
         } else {
             this.positionX++
         }
@@ -68,7 +70,13 @@ export class MarsRover {
     }
 
     private wrapAroundX(): void {
-        this.positionX = this.positionX == this.plateauSize? 0 : this.positionX;
+        if(this.positionX < 0 ){
+            this.positionX = this.plateauSize - 1
+        }
+
+        if (this.positionX == this.plateauSize) {
+            this.positionX = 0;
+        }
     }
 
     private isAMovementCommand(actualCommand: string): boolean {
