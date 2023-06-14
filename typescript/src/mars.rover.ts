@@ -5,13 +5,17 @@ export class MarsRover {
         let positionY = 0;
 
         command.split("").forEach((actualCommand) => {
-            if(this.isAMovementCommand(actualCommand)) positionY++
+            if (this.isAMovementCommand(actualCommand)) positionY++
         })
 
-        return `0,${positionY % 10},N`
+        return `0,${(this.wrapAround(positionY))},N`
     }
 
-    private isAMovementCommand(actualCommand: string) {
+    private wrapAround(positionY: number): number {
+        return positionY % 10;
+    }
+
+    private isAMovementCommand(actualCommand: string): boolean {
         return actualCommand == MOVE;
     }
 }
