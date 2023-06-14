@@ -1,4 +1,4 @@
-const MOVE = "M";
+export const MOVE = "M";
 
 export class MarsRover {
     execute(command: string): string {

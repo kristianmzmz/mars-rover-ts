@@ -1,4 +1,4 @@
-import {MarsRover} from "../../src/mars.rover";
+import {MarsRover, MOVE} from "../../src/mars.rover";
 
 describe('Mars Rover', () => {
     it('should create the mars rover', () => {
@@ -16,10 +16,10 @@ describe('Mars Rover', () => {
     });
 
     it.each([
-        ["0,1,N", "M"],
-        ["0,2,N", "MM"],
-        ["0,3,N", "MMM"],
-        ["0,0,N", "MMMMMMMMMM"],
+        ["0,1,N", MOVE],
+        ["0,2,N", MOVE+MOVE],
+        ["0,3,N", MOVE+MOVE+MOVE],
+        ["0,0,N", MOVE+MOVE+MOVE+MOVE+MOVE+MOVE+MOVE+MOVE+MOVE+MOVE],
     ])
     ('should display position (%s) when command is %s', (expectedResult: string, inputCommand: string) => {
         // Given
