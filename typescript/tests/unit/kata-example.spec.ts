@@ -76,4 +76,21 @@ describe('Mars Rover', () => {
         // Then
         expect(movementResult).toBe(expectedResult)
     });
+
+    it.each([
+        ["0,1,W", MOVE + ROTATE_LEFT],
+        ["9,1,W", MOVE + ROTATE_LEFT + MOVE],
+        ["8,1,W", MOVE + ROTATE_LEFT + MOVE + MOVE],
+        ["0,0,S", MOVE + ROTATE_LEFT + ROTATE_LEFT + MOVE],
+        ["0,9,S", MOVE + ROTATE_LEFT + ROTATE_LEFT + MOVE + MOVE],
+        ["1,1,E", MOVE + ROTATE_LEFT + ROTATE_LEFT + ROTATE_LEFT + MOVE],
+    ])
+    ('should move and rotate to the left the position displaying (%s) when command is %s', (expectedResult: string, inputCommand: string) => {
+        // Given
+        let rover = new MarsRover();
+        // When
+        let movementResult = rover.execute(inputCommand);
+        // Then
+        expect(movementResult).toBe(expectedResult)
+    });
 });
