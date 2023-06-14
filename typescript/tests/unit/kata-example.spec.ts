@@ -17,9 +17,9 @@ describe('Mars Rover', () => {
 
     it.each([
         ["0,1,N", MOVE],
-        ["0,2,N", MOVE+MOVE],
-        ["0,3,N", MOVE+MOVE+MOVE],
-        ["0,0,N", MOVE+MOVE+MOVE+MOVE+MOVE+MOVE+MOVE+MOVE+MOVE+MOVE],
+        ["0,2,N", MOVE + MOVE],
+        ["0,3,N", MOVE + MOVE + MOVE],
+        ["0,0,N", MOVE + MOVE + MOVE + MOVE + MOVE + MOVE + MOVE + MOVE + MOVE + MOVE],
     ])
     ('should display position (%s) when command is %s', (expectedResult: string, inputCommand: string) => {
         // Given
@@ -28,5 +28,12 @@ describe('Mars Rover', () => {
         let movementResult = rover.execute(inputCommand);
         // Then
         expect(movementResult).toBe(expectedResult)
+    });
+
+    it('should display the mars rover facing east when rotating to right from the starting position', () => {
+        let rover = new MarsRover();
+        let rotationCommand = "R";
+        let expectedResult = rover.execute(rotationCommand);
+        expect(expectedResult).toBe("0,0,E")
     });
 });
