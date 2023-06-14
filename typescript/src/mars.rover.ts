@@ -24,14 +24,19 @@ export class MarsRover {
     }
 
     private rotate(): void {
-        if (this.direction === NORTH) {
-            this.direction = EAST
-        } else if (this.direction == EAST) {
-            this.direction = SOUTH
-        } else if (this.direction == SOUTH) {
-            this.direction = WEST
-        } else {
-            this.direction = NORTH
+        switch (this.direction) {
+            case NORTH:
+                this.direction = EAST
+                break;
+            case EAST:
+                this.direction = SOUTH
+                break;
+            case SOUTH:
+                this.direction = WEST
+                break;
+            default:
+                this.direction = NORTH
+                break;
         }
     }
 
