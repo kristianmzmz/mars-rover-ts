@@ -32,9 +32,9 @@ export class MarsRover {
     private move(): void {
         if (this.direction == NORTH) {
             this.positionY++
-        } else if(this.direction == SOUTH) {
-            this.positionX++
-        }else {
+        } else if (this.direction == SOUTH) {
+            this.positionY--
+        } else {
             this.positionX++
         }
     }
@@ -63,6 +63,7 @@ export class MarsRover {
     private wrapAround(): number {
         return this.positionY % this.plateauSize;
     }
+
     private wrapAroundX(): number {
         return this.positionX % this.plateauSize;
     }
