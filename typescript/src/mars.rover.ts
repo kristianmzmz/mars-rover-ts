@@ -1,6 +1,8 @@
 export const MOVE = "M";
 
 export class MarsRover {
+    private readonly plateauSize = 10;
+
     execute(command: string): string {
         let positionY = 0;
 
@@ -12,7 +14,7 @@ export class MarsRover {
     }
 
     private wrapAround(positionY: number): number {
-        return positionY % 10;
+        return positionY % this.plateauSize;
     }
 
     private isAMovementCommand(actualCommand: string): boolean {
