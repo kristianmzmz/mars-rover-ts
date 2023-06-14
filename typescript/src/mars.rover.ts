@@ -8,7 +8,7 @@ const SOUTH: string = 'S';
 const WEST: string = "W";
 
 export class MarsRover {
-    private readonly plateauSize: number = 10;
+    private readonly plateauSize: number = 9;
     private positionY: number = 0;
     private positionX: number = 0;
     private direction: string = NORTH;
@@ -18,8 +18,11 @@ export class MarsRover {
             if (this.isAMovementCommand(actualCommand)) {
                 this.move();
             }
-            if (this.isRotatingToLeft(actualCommand) || this.isRotatingToLeft(actualCommand)) {
-                this.rotate(actualCommand);
+            if (this.isRotatingToRight(actualCommand)) {
+                this.rotateRight();
+            }
+            if (this.isRotatingToLeft(actualCommand)) {
+                this.rotateLeft();
             }
         })
 
@@ -37,21 +40,12 @@ export class MarsRover {
             this.positionY--
         } else if (this.direction == WEST) {
             this.positionX--
-        } else {
+        } else if (this.direction == EAST) {
             this.positionX++
         }
 
         this.wrapAround()
         this.wrapAroundX()
-    }
-
-    private rotate(actualCommand: string): void {
-        if (this.isRotatingToRight(actualCommand)) {
-            this.rotateRight();
-        }
-        if (this.isRotatingToLeft(actualCommand)) {
-            this.rotateLeft();
-        }
     }
 
     private isRotatingToLeft(actualCommand: string): boolean {
@@ -98,20 +92,20 @@ export class MarsRover {
 
     private wrapAround(): void {
         if (this.positionY < 0) {
-            this.positionY = this.plateauSize - 1
+            this.positionY = this.plateauSize
         }
 
-        if (this.positionY == this.plateauSize) {
+        if (this.positionY > this.plateauSize) {
             this.positionY = 0;
         }
     }
 
     private wrapAroundX(): void {
         if (this.positionX < 0) {
-            this.positionX = this.plateauSize - 1
+            this.positionX = this.plateauSize
         }
 
-        if (this.positionX == this.plateauSize) {
+        if (this.positionX > this.plateauSize) {
             this.positionX = 0;
         }
     }
