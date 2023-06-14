@@ -30,21 +30,17 @@ describe('Mars Rover', () => {
         expect(movementResult).toBe(expectedResult)
     });
 
-    it('should display the mars rover facing east when rotating to right from the starting position', () => {
+    it.each([
+        ["0,0,E", ROTATE_RIGHT],
+        ["0,0,S", ROTATE_RIGHT + ROTATE_RIGHT],
+        ["0,0,W", ROTATE_RIGHT + ROTATE_RIGHT + ROTATE_RIGHT],
+    ])
+    ('should rotate the position to the right and display (%s) when command is %s', (expectedResult: string, inputCommand: string) => {
+        // Given
         let rover = new MarsRover();
-        let expectedResult = rover.execute(ROTATE_RIGHT);
-        expect(expectedResult).toBe("0,0,E")
-    });
-
-    it('should display the mars rover facing South when rotating to right twice from the starting position', () => {
-        let rover = new MarsRover();
-        let expectedResult = rover.execute(ROTATE_RIGHT + ROTATE_RIGHT);
-        expect(expectedResult).toBe("0,0,S")
-    });
-
-    it('should display the mars rover facing West when rotating to right thrice from the starting position', () => {
-        let rover = new MarsRover();
-        let expectedResult = rover.execute(ROTATE_RIGHT + ROTATE_RIGHT + ROTATE_RIGHT);
-        expect(expectedResult).toBe("0,0,W")
+        // When
+        let movementResult = rover.execute(inputCommand);
+        // Then
+        expect(movementResult).toBe(expectedResult)
     });
 });
