@@ -8,8 +8,8 @@ const WEST = "W";
 
 export class MarsRover {
     private readonly plateauSize = 10;
-    private positionY = 0;
-
+    private positionY: number = 0;
+    private positionX: number = 0;
     private direction: string = NORTH;
 
     execute(command: string): string {
@@ -20,11 +20,15 @@ export class MarsRover {
             }
         })
 
-        return `0,${this.wrapAround()},${(this.direction)}`
+        return `${this.positionX},${this.wrapAround()},${(this.direction)}`
     }
 
     private move(): void {
-        this.positionY++
+        if (this.direction == 'N') {
+            this.positionY++
+        } else {
+            this.positionX++
+        }
     }
 
     private isARotationMovement(actualCommand: string) {
