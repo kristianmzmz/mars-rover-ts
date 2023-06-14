@@ -54,4 +54,12 @@ describe('Mars Rover', () => {
         expect(movementResult).toBe("0,1,E")
     });
 
+    it('should move and rotate to (1,1,E) when command is MRM', () => {
+        // Given
+        let rover = new MarsRover();
+        // When
+        let movementResult = rover.execute("MRM");
+        // Then
+        expect(movementResult).toBe("1,1,E")
+    });
 });
