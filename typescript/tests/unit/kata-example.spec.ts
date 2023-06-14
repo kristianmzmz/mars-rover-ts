@@ -34,6 +34,7 @@ describe('Mars Rover', () => {
         ["0,0,E", ROTATE_RIGHT],
         ["0,0,S", ROTATE_RIGHT + ROTATE_RIGHT],
         ["0,0,W", ROTATE_RIGHT + ROTATE_RIGHT + ROTATE_RIGHT],
+        ["0,0,N", ROTATE_RIGHT + ROTATE_RIGHT + ROTATE_RIGHT + ROTATE_RIGHT],
     ])
     ('should rotate the position to the right and display (%s) when command is %s', (expectedResult: string, inputCommand: string) => {
         // Given
