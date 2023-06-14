@@ -1,4 +1,5 @@
 export const MOVE = "M";
+const ROTATE_RIGHT = "R";
 
 export class MarsRover {
     private readonly plateauSize = 10;
@@ -9,7 +10,7 @@ export class MarsRover {
 
         command.split("").forEach((actualCommand) => {
             if (this.isAMovementCommand(actualCommand)) positionY++
-            if (command == "R") direction = "E"
+            if (command == ROTATE_RIGHT) direction = "E"
         })
 
         return `0,${(this.wrapAround(positionY))},${direction}`
