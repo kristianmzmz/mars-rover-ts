@@ -4,6 +4,7 @@ export const ROTATE_RIGHT = "R";
 const NORTH = 'N';
 const EAST = 'E';
 const SOUTH = 'S';
+const WEST = "W";
 
 export class MarsRover {
     private readonly plateauSize = 10;
@@ -27,6 +28,8 @@ export class MarsRover {
             this.direction = EAST
         } else if (this.direction == EAST) {
             this.direction = SOUTH
+        } else if (this.direction == SOUTH) {
+            this.direction = WEST
         }
     }
 
