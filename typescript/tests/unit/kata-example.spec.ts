@@ -45,30 +45,17 @@ describe('Mars Rover', () => {
         expect(movementResult).toBe(expectedResult)
     });
 
-    it('should move and rotate to (0,1,E) when command is MR', () => {
+    it.each([
+        ["0,1,E", MOVE + ROTATE_RIGHT ],
+        ["1,1,E", MOVE + ROTATE_RIGHT + MOVE],
+        ["0,1,E", MOVE + ROTATE_RIGHT + MOVE+ MOVE+ MOVE+ MOVE+ MOVE+ MOVE+ MOVE+ MOVE+ MOVE + MOVE],
+    ])
+    ('should move and rotate to the right the position displaying (%s) when command is %s', (expectedResult: string, inputCommand: string) => {
         // Given
         let rover = new MarsRover();
         // When
-        let movementResult = rover.execute("MR");
+        let movementResult = rover.execute(inputCommand);
         // Then
-        expect(movementResult).toBe("0,1,E")
-    });
-
-    it('should move and rotate to (1,1,E) when command is MRM', () => {
-        // Given
-        let rover = new MarsRover();
-        // When
-        let movementResult = rover.execute("MRM");
-        // Then
-        expect(movementResult).toBe("1,1,E")
-    });
-
-    it('should move, rotate and wrap around finishing at (0,1,E) when command is MRMMMMMMMMMM', () => {
-        // Given
-        let rover = new MarsRover();
-        // When
-        let movementResult = rover.execute("MRMMMMMMMMMM");
-        // Then
-        expect(movementResult).toBe("0,1,E")
+        expect(movementResult).toBe(expectedResult)
     });
 });
