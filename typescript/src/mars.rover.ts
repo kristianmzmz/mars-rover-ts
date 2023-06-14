@@ -30,6 +30,8 @@ export class MarsRover {
             this.direction = SOUTH
         } else if (this.direction == SOUTH) {
             this.direction = WEST
+        } else {
+            this.direction = NORTH
         }
     }
 
