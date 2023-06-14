@@ -10,7 +10,13 @@ export class MarsRover {
 
         command.split("").forEach((actualCommand) => {
             if (this.isAMovementCommand(actualCommand)) this.positionY++
-            if (command == ROTATE_RIGHT) direction = "E"
+            if (actualCommand == ROTATE_RIGHT) {
+                if(direction === 'N') {
+                    direction = 'E'
+                } else if(direction == 'E'){
+                    direction = 'S'
+                }
+            }
         })
 
         return `0,${(this.wrapAround())},${direction}`
