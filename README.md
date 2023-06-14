@@ -1,101 +1,45 @@
-# Base para hacer tests
+## Instructions:
 
-Configuración básica para empezar a hacer una kata o aprender a hacer tests en los siguientes lenguajes:
+A squad of robotic rovers are to be landed by NASA on a plateau on Mars.
 
-- PHP y PHPUnit
-- Javascript con Jest
-- Typescript con Deno
-- Java, Junit y Mockito
-- Scala, Munit y Scalacheck
-- Kotlin, JUnit5 y MockK
-- C#, xUnit (con FluentAsertion) y NSubstitute (para mock)
+This plateau, which is curiously rectangular, must be navigated by the rovers so that their onboard cameras can get a complete view of the surrounding terrain to send back to Earth.
 
-# Configuración específica por lenguaje
+Your task is to develop an API that moves the rovers around on the plateau.
 
-## PHP con PHPUnit
+In this API, the plateau is represented as a 10x10 grid, and a rover has state consisting of two parts:
 
-1. Instalar [composer](https://getcomposer.org/) `curl -sS https://getcomposer.org/installer | php`
-2. `composer install` (estando en la carpeta php)
-3. `./vendor/bin/phpunit`
+its position on the grid (represented by an X,Y coordinate pair)
+the direction the compass is facing (represented by a letter, one of  'N', 'S', 'E', 'W')
+the starting position of the rover is '0:0:N'
+Input
 
-### 📚 Documentación
-- [PHPUnit](https://phpunit.readthedocs.io/)
-- [Prophecy](https://github.com/phpspec/prophecy) para dobles de prueba
+The input to the program is a string of one-character move commands:
 
-## Javascript con Jest
+'L' and 'R' rotate the direction the rover is facing
+'M' moves the rover one grid square forward in the direction it is currently facing.
+If a rover reaches the end of the plateau, it wraps around the end of the grid.
 
-1. Instalar [Node](http://nodejs.org/)
-2. `npm install` (Estando en la carpeta javascript)
-3. `npm test`
+## Output
 
-### 📚 Documentación
-- [Jest](https://jestjs.io)
+The program's output is the final position of the rover after all the move commands have been executed. The position is represented as a coordinate pair and a direction, joined by colons to form a string. For example: a rover whose position is `2:3:W` is at square (2,3), facing west.
 
-## Typescript con Deno
+## Examples
+given an input 'MMRMMLM' then the output should be '2:3:N'
+given an input 'MMMMMMMMMM' gives output '0:0:N' (due to wrap-around)
 
-1. Instalar [Deno](https://deno.land/#installation)
-2. `deno test` (Estando en la carpeta typescript)
+## Interface
 
-### 📚 Documentación
-- [Deno](https://deno.land/manual)
-- [BDD module](https://deno.land/manual/testing/behavior_driven_development)
-- [Expect module](https://deno.land/x/expect)
+There are no restrictions on the design of the public interface.
 
-## Java con Junit y Mockito
+A public interface to the API could look something like this:
 
-1. Instalar las dependencias y tests con Maven [mvn test]
-2. Ejecutar los tests con el IDE
+public class MarsRover
+{
+public string Execute(string command);
+}
 
-### 📚 Documentación
-- [JUnit](https://github.com/junit-team/junit/wiki)
-- [Mockito](http://site.mockito.org/mockito/docs/current/org/mockito/Mockito.html)
 
-## Scala con Munit y Scalacheck
 
-1. `sbt` (en la carpeta scala)
-2. `~test` para ejecutar los test en hot reload
-
-### 📚 Documentación
-- [Munit](https://scalameta.org/munit/docs/tests.html)
-- [Scalacheck](https://github.com/typelevel/scalacheck/blob/main/doc/UserGuide.md) para testing basado en propiedades
-
-### Linux/Mac
-1. Instalar [SDKMan](https://sdkman.io/)
-2. `sdk install java 11.0.12-open` instala OpenJDK
-3. `sdk install sbt` una vez instalado SDKMan
-
-### Windows
-1. Instalar [OpenJDK](https://docs.microsoft.com/es-es/java/openjdk/download#openjdk-110141-lts--see-previous-releases)
-2. Instalar [SBT](https://www.scala-sbt.org/download.html)
-
-### Visual Studio Code
-1. Descargar [Visual Studio Code](https://code.visualstudio.com/)
-2. Instalar para VS Code [Metals](https://scalameta.org/metals/docs/editors/vscode)
-
-## Kotlin con JUnit5 y MockK
-
-1. Por consola: Puedes instalar dependencias y lanzar los tests con `gradlew test`
-2. Usando IDE: Simplemente abre el proyecto desde el raiz de la plantilla Kotlin
-
-### 📚 Documentación
-- [JUnit5](https://junit.org/junit5/)
-- [MockK](https://mockk.io/)
-
-## C# con  xUnit (con FluentAsertion) y NSubstitute (para mock)
-
-1. Instalar Microsoft Visual Studio Community 2022
-2. Abre el proyecto y se descargaran automáticamente los paquetes Nuguet necesarios
-3.
-### 📚 Documentación
-- [xUnit](https://xunit.net/)
-- [NSubstitute](https://nsubstitute.github.io/help.html)
-- [FluentAssertions](https://fluentassertions.com/introduction)
-
-## Python
-1. Instalar python 3.x
-2. Una vez descargado el código fuente dentro de la carpeta */python/ creamos un virtual enviroment:
-3. `python3 -m venv env`
-4. Activamos en virtual environment:
-- windows: `.\env\Scripts\activate.bat`
-- linux/mac: `source env/bin/activate`
-5. `pytest` para ejecutar los tests.
+## Rules:
+The rover receives a char array of commands e.g.'RMMLM' and returns the finishing point after the moves e.g. '2:1:N'
+The rover wraps around if it reaches the end of the grid.
