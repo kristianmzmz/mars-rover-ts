@@ -1,5 +1,5 @@
 export class MarsRover {
     execute(): string {
-        throw new Error("Not implemented method")
+        return "0,0,N"
     }
 }
