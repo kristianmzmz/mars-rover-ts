@@ -2,19 +2,19 @@ export const MOVE: string = "M";
 export const ROTATE_RIGHT: string = "R";
 export const ROTATE_LEFT: string = "L";
 
-const NORTH: string = 'N';
+export const NORTH: string = 'N';
 const EAST: string = 'E';
 const SOUTH: string = 'S';
 const WEST: string = "W";
 
 const PLATEAU_SIZE: number = 9;
-const INITIAL_POSITION: number = 0;
+export const PLATEAU_INITIAL_POSITION: number = 0;
 
 export class MarsRover {
 
-    constructor(private _positionY: number = INITIAL_POSITION,
-                private _positionX: number = INITIAL_POSITION,
-                private _direction: string = NORTH) {
+    constructor(private _positionX: number,
+                private _positionY: number,
+                private _direction: string) {
 
     }
 
@@ -105,11 +105,11 @@ export class MarsRover {
     }
 
     private wrapAroundPosition(position: number) {
-        if (position < INITIAL_POSITION) {
+        if (position < PLATEAU_INITIAL_POSITION) {
             return PLATEAU_SIZE
         }
         if (position > PLATEAU_SIZE) {
-            return INITIAL_POSITION;
+            return PLATEAU_INITIAL_POSITION;
         }
 
         return position;

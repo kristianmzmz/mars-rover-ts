@@ -1,9 +1,9 @@
-import {MarsRover, MOVE, ROTATE_LEFT, ROTATE_RIGHT} from "../../src/mars.rover";
+import {PLATEAU_INITIAL_POSITION, MarsRover, MOVE, NORTH, ROTATE_LEFT, ROTATE_RIGHT} from "../../src/mars.rover";
 
 let rover: MarsRover
 describe('Mars Rover', () => {
     beforeEach(() => {
-        rover = new MarsRover();
+        rover = new MarsRover(PLATEAU_INITIAL_POSITION, PLATEAU_INITIAL_POSITION, NORTH);
     })
 
     it('should create the mars rover', () => {
