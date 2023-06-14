@@ -1,5 +1,6 @@
 export const MOVE = "M";
 export const ROTATE_RIGHT = "R";
+export const ROTATE_LEFT = "L";
 
 const NORTH: string = 'N';
 const EAST: string = 'E';
@@ -17,8 +18,8 @@ export class MarsRover {
             if (this.isAMovementCommand(actualCommand)) {
                 this.move();
             }
-            if (this.isARotationCommand(actualCommand)) {
-                this.rotate();
+            if (this.isRotatingToLeft(actualCommand) || this.isRotatingToLeft(actualCommand)) {
+                this.rotate(actualCommand);
             }
         })
 
@@ -44,11 +45,24 @@ export class MarsRover {
         this.wrapAroundX()
     }
 
-    private isARotationCommand(actualCommand: string) {
+    private rotate(actualCommand: string): void {
+        if (this.isRotatingToRight(actualCommand)) {
+            this.rotateRight();
+        }
+        if (this.isRotatingToLeft(actualCommand)) {
+            this.rotateLeft();
+        }
+    }
+
+    private isRotatingToLeft(actualCommand: string): boolean {
+        return actualCommand == ROTATE_LEFT;
+    }
+
+    private isRotatingToRight(actualCommand: string): boolean {
         return actualCommand == ROTATE_RIGHT;
     }
 
-    private rotate(): void {
+    private rotateRight() {
         switch (this.direction) {
             case NORTH:
                 this.direction = EAST
@@ -65,8 +79,25 @@ export class MarsRover {
         }
     }
 
+    private rotateLeft() {
+        switch (this.direction) {
+            case NORTH:
+                this.direction = WEST
+                break;
+            case WEST:
+                this.direction = SOUTH
+                break;
+            case SOUTH:
+                this.direction = EAST
+                break;
+            default:
+                this.direction = NORTH
+                break;
+        }
+    }
+
     private wrapAround(): void {
-        if(this.positionY < 0 ){
+        if (this.positionY < 0) {
             this.positionY = this.plateauSize - 1
         }
 
@@ -76,7 +107,7 @@ export class MarsRover {
     }
 
     private wrapAroundX(): void {
-        if(this.positionX < 0 ){
+        if (this.positionX < 0) {
             this.positionX = this.plateauSize - 1
         }
 
