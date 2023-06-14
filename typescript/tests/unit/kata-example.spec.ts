@@ -116,6 +116,8 @@ describe('Mars Rover', () => {
             ["1,1,E","",1,1,EAST],
             ["1,7,S","",1,7,SOUTH],
             ["1,9,W","",1,9,WEST],
+            ["9,9,W","MM",1,9,WEST],
+            ["8,9,E","MMMMMMM",1,9,EAST],
         ])
         ('should display position (%s) when command is %s and the starting position is (%d:%d:%s)', (expectedResult: string, command: string, initialPositionX: number, initialPositionY: number, initialDirection: string) => {
             // Given
