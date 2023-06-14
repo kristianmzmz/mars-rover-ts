@@ -97,29 +97,22 @@ export class MarsRover {
     }
 
     private wrapAroundYAxis(): void {
-        let position: number = this._positionY;
-        if (position < INITIAL_POSITION) {
-            position = PLATEAU_SIZE
-        }
-
-        if (position > PLATEAU_SIZE) {
-            position = INITIAL_POSITION;
-        }
-
-        this._positionY = position
+        this._positionY = this.wrapAroundPosition(this._positionY)
     }
 
     private wrapAroundXAxis(): void {
-        let position: number = this._positionX;
+        this._positionX = this.wrapAroundPosition(this._positionX)
+    }
+
+    private wrapAroundPosition(position: number) {
         if (position < INITIAL_POSITION) {
-            position = PLATEAU_SIZE
+            return PLATEAU_SIZE
         }
-
         if (position > PLATEAU_SIZE) {
-            position = INITIAL_POSITION;
+            return INITIAL_POSITION;
         }
 
-        this._positionX = position
+        return position;
     }
 
     private isAMovementCommand(command: string): boolean {
