@@ -41,4 +41,10 @@ describe('Mars Rover', () => {
         let expectedResult = rover.execute(ROTATE_RIGHT + ROTATE_RIGHT);
         expect(expectedResult).toBe("0,0,S")
     });
+
+    it('should display the mars rover facing West when rotating to right thrice from the starting position', () => {
+        let rover = new MarsRover();
+        let expectedResult = rover.execute(ROTATE_RIGHT + ROTATE_RIGHT + ROTATE_RIGHT);
+        expect(expectedResult).toBe("0,0,W")
+    });
 });
