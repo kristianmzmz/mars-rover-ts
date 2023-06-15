@@ -10,11 +10,15 @@ export class Coordinate {
         return this._yAxis;
     }
 
-    toArray(): number[]{
-        return [this._xAxis,this._yAxis]
+    toArray(): number[] {
+        return [this._xAxis, this._yAxis]
     }
 
     nextY(): Coordinate {
-        return new Coordinate(this.xAxis(),this.yAxis()+1)
+        return new Coordinate(this.xAxis(), this.yAxis() + 1)
+    }
+
+    previousY(): Coordinate {
+        return new Coordinate(this.xAxis(), this.yAxis() - 1)
     }
 }

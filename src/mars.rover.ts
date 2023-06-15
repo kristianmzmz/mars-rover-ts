@@ -42,7 +42,7 @@ export class MarsRover {
         if (this.isFacingNorth()) {
             this._coordinate = this._coordinate.nextY()
         } else if (this.isFacingSouth()) {
-            this._coordinate = new Coordinate(this._coordinate.xAxis(),this._coordinate.yAxis()-1)
+            this._coordinate = this._coordinate.previousY()
         } else if (this.isFacingWest()) {
             this._coordinate = new Coordinate(this._coordinate.xAxis()-1,this._coordinate.yAxis())
         } else if (this.isFacingEast()) {
