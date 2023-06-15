@@ -9,7 +9,7 @@ let rover: MarsRover
 describe('Mars Rover', () => {
     describe('Initial position 0:0:N', () => {
         beforeEach(() => {
-            rover = new MarsRover(new Coordinate(0, 0), new North());
+            rover = new MarsRover(new Coordinate(0,0), new North());
         })
 
         it('should create the mars rover', () => {
@@ -117,7 +117,7 @@ describe('Mars Rover', () => {
         ])
         ('should display position (%s) when command is %s and the starting position is (%d:%d:%s)', (expectedResult: string, command: string, initialPositionX: number, initialPositionY: number, initialDirection: Direction) => {
             // Given
-            let coordinate = new Coordinate(initialPositionX, initialPositionY);
+            let coordinate = new Coordinate(initialPositionX,initialPositionY);
             rover = new MarsRover(coordinate, initialDirection);
             // When
             let movementResult = rover.execute(command);

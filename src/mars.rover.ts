@@ -12,13 +12,7 @@ export class MarsRover {
     private readonly PLATEAU_INITIAL_POSITION: number = 0;
     private readonly PLATEAU_SIZE: number = 9;
 
-    private _coordinate: number[];
-    private _direction: Direction;
-
-    constructor(_coordinate: Coordinate, _direction: Direction) {
-        this._direction = _direction;
-        this._coordinate = _coordinate.toArray();
-    }
+    constructor(private _coordinate: Coordinate, private _direction: Direction) {}
 
     execute(commands: string): string {
         commands.split("").forEach((actualCommand) => {
@@ -41,18 +35,18 @@ export class MarsRover {
     }
 
     private buildResult(): string {
-        return `${this._coordinate[0]},${this._coordinate[1]},${(this._direction)}`;
+        return `${this._coordinate.xAxis()},${this._coordinate.yAxis()},${(this._direction)}`;
     }
 
     private moveForward(): void {
         if (this.isFacingNorth()) {
-            this._coordinate[1]++
+            this._coordinate = new Coordinate(this._coordinate.xAxis(),this._coordinate.yAxis()+1)
         } else if (this.isFacingSouth()) {
-            this._coordinate[1]--
+            this._coordinate = new Coordinate(this._coordinate.xAxis(),this._coordinate.yAxis()-1)
         } else if (this.isFacingWest()) {
-            this._coordinate[0]--
+            this._coordinate = new Coordinate(this._coordinate.xAxis()-1,this._coordinate.yAxis())
         } else if (this.isFacingEast()) {
-            this._coordinate[0]++
+            this._coordinate = new Coordinate(this._coordinate.xAxis()+1,this._coordinate.yAxis())
         }
 
         this.wrapAroundYAxis()
@@ -92,11 +86,13 @@ export class MarsRover {
     }
 
     private wrapAroundYAxis(): void {
-        this._coordinate[1] = this.wrapAroundPosition(this._coordinate[1])
+        let newYAxisValue = this.wrapAroundPosition(this._coordinate.yAxis());
+        this._coordinate = new Coordinate(this._coordinate.xAxis(),newYAxisValue)
     }
 
     private wrapAroundXAxis(): void {
-        this._coordinate[0] = this.wrapAroundPosition(this._coordinate[0])
+        let newXAxisValue = this.wrapAroundPosition(this._coordinate.xAxis());
+        this._coordinate = new Coordinate(newXAxisValue, this._coordinate.yAxis())
     }
 
     private wrapAroundPosition(position: number) {
