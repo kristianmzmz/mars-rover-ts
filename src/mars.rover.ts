@@ -87,13 +87,19 @@ export class MarsRover {
     }
 
     private wrapAroundYAxis(): void {
-        let newYAxisValue = this.wrapAroundPosition(this._coordinate.yAxis());
-        this._coordinate = new Coordinate(this._coordinate.xAxis(), newYAxisValue)
+        let newYAxis: number = this.wrapAroundPosition(this._coordinate.yAxis());
+        let newXAxis: number = this._coordinate.xAxis();
+        this._coordinate = this.newCoordinate(newXAxis, newYAxis)
     }
 
     private wrapAroundXAxis(): void {
-        let newXAxisValue = this.wrapAroundPosition(this._coordinate.xAxis());
-        this._coordinate = new Coordinate(newXAxisValue, this._coordinate.yAxis())
+        let newYAxis: number = this._coordinate.yAxis();
+        let newXAxis: number = this.wrapAroundPosition(this._coordinate.xAxis());
+        this._coordinate = this.newCoordinate(newXAxis, newYAxis)
+    }
+
+    private newCoordinate(newXAxis: number, newYAxis: number): Coordinate {
+        return new Coordinate(newXAxis, newYAxis);
     }
 
     private wrapAroundPosition(position: number) {
