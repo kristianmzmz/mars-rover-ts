@@ -2,6 +2,7 @@ import {North} from "./direction/north";
 import {East} from "./direction/east";
 import {South} from "./direction/south";
 import {West} from "./direction/west";
+import {Coordinate} from "./coordinate";
 
 export const MOVE: string = "M";
 export const ROTATE_RIGHT: string = "R";
@@ -16,7 +17,7 @@ export class MarsRover {
 
     constructor(_coordinateX: number, _coordinateY: number, _direction: Direction) {
         this._direction = _direction;
-        this._coordinate = [_coordinateX, _coordinateY];
+        this._coordinate = new Coordinate(_coordinateX,_coordinateY).toArray();
     }
 
     execute(commands: string): string {
