@@ -15,9 +15,9 @@ export class MarsRover {
     private _coordinate: number[];
     private _direction: Direction;
 
-    constructor(_coordinateX: number, _coordinateY: number, _direction: Direction) {
+    constructor(_coordinate: Coordinate, _direction: Direction) {
         this._direction = _direction;
-        this._coordinate = new Coordinate(_coordinateX,_coordinateY).toArray();
+        this._coordinate = _coordinate.toArray();
     }
 
     execute(commands: string): string {

@@ -3,12 +3,13 @@ import {North} from "../../src/direction/north";
 import {East} from "../../src/direction/east";
 import {South} from "../../src/direction/south";
 import {West} from "../../src/direction/west";
+import {Coordinate} from "../../src/coordinate";
 
 let rover: MarsRover
 describe('Mars Rover', () => {
     describe('Initial position 0:0:N', () => {
         beforeEach(() => {
-            rover = new MarsRover(0, 0, new North());
+            rover = new MarsRover(new Coordinate(0, 0), new North());
         })
 
         it('should create the mars rover', () => {
@@ -116,7 +117,8 @@ describe('Mars Rover', () => {
         ])
         ('should display position (%s) when command is %s and the starting position is (%d:%d:%s)', (expectedResult: string, command: string, initialPositionX: number, initialPositionY: number, initialDirection: Direction) => {
             // Given
-            rover = new MarsRover(initialPositionX, initialPositionY, initialDirection);
+            let coordinate = new Coordinate(initialPositionX, initialPositionY);
+            rover = new MarsRover(coordinate, initialDirection);
             // When
             let movementResult = rover.execute(command);
             // Then
