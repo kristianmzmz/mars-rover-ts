@@ -1,13 +1,16 @@
 import {North} from "./north";
+import {East} from "./east";
+import {South} from "./south";
+import {West} from "./west";
 
 export const MOVE: string = "M";
 export const ROTATE_RIGHT: string = "R";
 export const ROTATE_LEFT: string = "L";
 
 export const NORTH: string = new North().toString();
-export const EAST: string = 'E';
-export const SOUTH: string = 'S';
-export const WEST: string = "W";
+export const EAST: string = new East().toString();
+export const SOUTH: string = new South().toString();
+export const WEST: string = new West().toString();
 
 export class MarsRover {
     private readonly PLATEAU_INITIAL_POSITION: number = 0;

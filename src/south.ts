@@ -1,7 +1,7 @@
-import {West} from "./west";
 import {East} from "./east";
+import {West} from "./west";
 
-export class North implements Direction {
+export class South implements Direction {
     turnLeft(): Direction {
         return new West();
     }
@@ -11,6 +11,6 @@ export class North implements Direction {
     }
 
     toString(): string {
-        return 'N'
+        return 'S'
     }
 }
