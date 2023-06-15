@@ -7,11 +7,6 @@ export const MOVE: string = "M";
 export const ROTATE_RIGHT: string = "R";
 export const ROTATE_LEFT: string = "L";
 
-export const NORTH: string = new North().toString();
-export const EAST: string = new East().toString();
-export const SOUTH: string = new South().toString();
-export const WEST: string = new West().toString();
-
 export class MarsRover {
     private readonly PLATEAU_INITIAL_POSITION: number = 0;
     private readonly PLATEAU_SIZE: number = 9;
@@ -66,19 +61,19 @@ export class MarsRover {
     }
 
     private isFacingEast() {
-        return this._direction == EAST;
+        return this._direction == new East().toString();
     }
 
     private isFacingWest() {
-        return this._direction == WEST;
+        return this._direction == new West().toString();
     }
 
     private isFacingNorth() {
-        return this._direction == NORTH;
+        return this._direction == new North().toString();
     }
 
     private isFacingSouth() {
-        return this._direction == SOUTH;
+        return this._direction == new South().toString();
     }
 
     private isRotatingToLeft(actualCommand: string): boolean {
@@ -92,16 +87,16 @@ export class MarsRover {
     private rotateRight(): void {
         switch (true) {
             case this.isFacingNorth():
-                this._direction = EAST
+                this._direction = new East().toString()
                 break;
             case this.isFacingEast():
-                this._direction = SOUTH
+                this._direction = new South().toString()
                 break;
             case this.isFacingSouth():
-                this._direction = WEST
+                this._direction = new West().toString()
                 break;
             case this.isFacingWest():
-                this._direction = NORTH
+                this._direction = new North().toString()
                 break;
         }
     }
@@ -109,16 +104,16 @@ export class MarsRover {
     private rotateLeft(): void {
         switch (true) {
             case this.isFacingNorth():
-                this._direction = WEST
+                this._direction = new West().toString()
                 break;
             case this.isFacingWest():
-                this._direction = SOUTH
+                this._direction = new South().toString()
                 break;
             case this.isFacingSouth():
-                this._direction = EAST
+                this._direction = new East().toString()
                 break;
             case this.isFacingEast():
-                this._direction = NORTH
+                this._direction = new North().toString()
                 break;
         }
     }

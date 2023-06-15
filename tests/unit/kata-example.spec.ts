@@ -1,18 +1,14 @@
-import {
-    MarsRover,
-    MOVE,
-    NORTH,
-    ROTATE_LEFT,
-    ROTATE_RIGHT,
-    EAST,
-    SOUTH, WEST
-} from "../../src/mars.rover";
+import {MarsRover, MOVE, ROTATE_LEFT, ROTATE_RIGHT} from "../../src/mars.rover";
+import {North} from "../../src/north";
+import {East} from "../../src/east";
+import {South} from "../../src/south";
+import {West} from "../../src/west";
 
 let rover: MarsRover
 describe('Mars Rover', () => {
     describe('Initial position 0:0:N', () => {
         beforeEach(() => {
-            rover = new MarsRover(0, 0, NORTH);
+            rover = new MarsRover(0, 0, new North().toString());
         })
 
         it('should create the mars rover', () => {
@@ -110,13 +106,13 @@ describe('Mars Rover', () => {
 
     describe('Change initial position', () => {
         it.each([
-            ["0,0,N", "", 0, 0, NORTH],
-            ["1,1,N", "", 1, 1, NORTH],
-            ["1,1,E", "", 1, 1, EAST],
-            ["1,7,S", "", 1, 7, SOUTH],
-            ["1,9,W", "", 1, 9, WEST],
-            ["9,9,W", "MM", 1, 9, WEST],
-            ["8,9,E", "MMMMMMM", 1, 9, EAST],
+            ["0,0,N", "", 0, 0, new North().toString()],
+            ["1,1,N", "", 1, 1, new North().toString()],
+            ["1,1,E", "", 1, 1, new East().toString()],
+            ["1,7,S", "", 1, 7, new South().toString()],
+            ["1,9,W", "", 1, 9, new West().toString()],
+            ["9,9,W", "MM", 1, 9, new West().toString()],
+            ["8,9,E", "MMMMMMM", 1, 9, new East().toString()],
         ])
         ('should display position (%s) when command is %s and the starting position is (%d:%d:%s)', (expectedResult: string, command: string, initialPositionX: number, initialPositionY: number, initialDirection: string) => {
             // Given
