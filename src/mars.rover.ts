@@ -1,7 +1,7 @@
-import {North} from "./north";
-import {East} from "./east";
-import {South} from "./south";
-import {West} from "./west";
+import {North} from "./direction/north";
+import {East} from "./direction/east";
+import {South} from "./direction/south";
+import {West} from "./direction/west";
 
 export const MOVE: string = "M";
 export const ROTATE_RIGHT: string = "R";

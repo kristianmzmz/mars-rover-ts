@@ -1,8 +1,8 @@
 import {MarsRover, MOVE, ROTATE_LEFT, ROTATE_RIGHT} from "../../src/mars.rover";
-import {North} from "../../src/north";
-import {East} from "../../src/east";
-import {South} from "../../src/south";
-import {West} from "../../src/west";
+import {North} from "../../src/direction/north";
+import {East} from "../../src/direction/east";
+import {South} from "../../src/direction/south";
+import {West} from "../../src/direction/west";
 
 let rover: MarsRover
 describe('Mars Rover', () => {
