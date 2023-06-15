@@ -1,8 +1,10 @@
+import {North} from "./north";
+
 export const MOVE: string = "M";
 export const ROTATE_RIGHT: string = "R";
 export const ROTATE_LEFT: string = "L";
 
-export const NORTH: string = 'N';
+export const NORTH: string = new North().toString();
 export const EAST: string = 'E';
 export const SOUTH: string = 'S';
 export const WEST: string = "W";
