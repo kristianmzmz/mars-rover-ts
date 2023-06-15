@@ -8,7 +8,7 @@ let rover: MarsRover
 describe('Mars Rover', () => {
     describe('Initial position 0:0:N', () => {
         beforeEach(() => {
-            rover = new MarsRover(0, 0, new North().toString());
+            rover = new MarsRover(0, 0, new North());
         })
 
         it('should create the mars rover', () => {
@@ -106,15 +106,15 @@ describe('Mars Rover', () => {
 
     describe('Change initial position', () => {
         it.each([
-            ["0,0,N", "", 0, 0, new North().toString()],
-            ["1,1,N", "", 1, 1, new North().toString()],
-            ["1,1,E", "", 1, 1, new East().toString()],
-            ["1,7,S", "", 1, 7, new South().toString()],
-            ["1,9,W", "", 1, 9, new West().toString()],
-            ["9,9,W", "MM", 1, 9, new West().toString()],
-            ["8,9,E", "MMMMMMM", 1, 9, new East().toString()],
+            ["0,0,N", "", 0, 0, new North()],
+            ["1,1,N", "", 1, 1, new North()],
+            ["1,1,E", "", 1, 1, new East()],
+            ["1,7,S", "", 1, 7, new South()],
+            ["1,9,W", "", 1, 9, new West()],
+            ["9,9,W", "MM", 1, 9, new West()],
+            ["8,9,E", "MMMMMMM", 1, 9, new East()],
         ])
-        ('should display position (%s) when command is %s and the starting position is (%d:%d:%s)', (expectedResult: string, command: string, initialPositionX: number, initialPositionY: number, initialDirection: string) => {
+        ('should display position (%s) when command is %s and the starting position is (%d:%d:%s)', (expectedResult: string, command: string, initialPositionX: number, initialPositionY: number, initialDirection: Direction) => {
             // Given
             rover = new MarsRover(initialPositionX, initialPositionY, initialDirection);
             // When
