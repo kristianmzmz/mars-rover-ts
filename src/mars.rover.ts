@@ -11,14 +11,12 @@ export class MarsRover {
     private readonly PLATEAU_INITIAL_POSITION: number = 0;
     private readonly PLATEAU_SIZE: number = 9;
 
-    private _coordinateY: number;
     private _coordinate: number[];
     private _direction: Direction;
 
     constructor(_coordinateY: number, _coordinateX: number, _direction: Direction) {
         this._direction = _direction;
-        this._coordinateY = _coordinateX;
-        this._coordinate = [_coordinateY, this._coordinateY];
+        this._coordinate = [_coordinateY, _coordinateX];
     }
 
     execute(commands: string): string {
@@ -42,14 +40,14 @@ export class MarsRover {
     }
 
     private buildResult(): string {
-        return `${this._coordinate[0]},${this._coordinateY},${(this._direction)}`;
+        return `${this._coordinate[0]},${this._coordinate[1]},${(this._direction)}`;
     }
 
     private moveForward(): void {
         if (this.isFacingNorth()) {
-            this._coordinateY++
+            this._coordinate[1]++
         } else if (this.isFacingSouth()) {
-            this._coordinateY--
+            this._coordinate[1]--
         } else if (this.isFacingWest()) {
             this._coordinate[0]--
         } else if (this.isFacingEast()) {
@@ -93,7 +91,7 @@ export class MarsRover {
     }
 
     private wrapAroundYAxis(): void {
-        this._coordinateY = this.wrapAroundPosition(this._coordinateY)
+        this._coordinate[1] = this.wrapAroundPosition(this._coordinate[1])
     }
 
     private wrapAroundXAxis(): void {
