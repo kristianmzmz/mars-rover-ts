@@ -13,4 +13,8 @@ export class Coordinate {
     toArray(): number[]{
         return [this._xAxis,this._yAxis]
     }
+
+    nextY(): Coordinate {
+        return new Coordinate(this.xAxis(),this.yAxis()+1)
+    }
 }
