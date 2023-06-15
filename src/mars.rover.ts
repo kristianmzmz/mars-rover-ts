@@ -89,20 +89,7 @@ export class MarsRover {
     }
 
     private rotateLeft(): void {
-        switch (true) {
-            case this.isFacingNorth():
-                this._direction = new West()
-                break;
-            case this.isFacingWest():
-                this._direction = new South()
-                break;
-            case this.isFacingSouth():
-                this._direction = new East()
-                break;
-            case this.isFacingEast():
-                this._direction = new North()
-                break;
-        }
+        this._direction = this._direction.turnLeft()
     }
 
     private wrapAroundYAxis(): void {
