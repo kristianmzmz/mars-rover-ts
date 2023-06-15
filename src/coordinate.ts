@@ -21,4 +21,12 @@ export class Coordinate {
     previousY(): Coordinate {
         return new Coordinate(this.xAxis(), this.yAxis() - 1)
     }
+
+    nextX(): Coordinate {
+        return new Coordinate(this.xAxis() + 1, this.yAxis())
+    }
+
+    previousX(): Coordinate {
+        return new Coordinate(this.xAxis() - 1, this.yAxis())
+    }
 }
