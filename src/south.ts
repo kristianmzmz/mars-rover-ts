@@ -3,11 +3,11 @@ import {West} from "./west";
 
 export class South implements Direction {
     turnLeft(): Direction {
-        return new West();
+        return new East();
     }
 
     turnRight(): Direction {
-        return new East();
+        return new West();
     }
 
     toString(): string {
